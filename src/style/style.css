@@ -20,15 +20,17 @@ main {
 #contadores {
     grid-area: contadores;
 
-    height: 100px;
+    height: 200px;
+    border-radius: 200px;
     margin-bottom: 20px;
+    margin-top: 60px;
     font-size: 20px;
     
     display: grid;
     grid-template: 
     " article article article"
-    ". . ."
-    ". btn .";
+    ". . ." 20px
+    ". btn ." 40px;
 
     grid-template-columns: repeat(3, 1fr);
 
@@ -58,7 +60,6 @@ article p {
     border: none;
     border-right: 8px solid darkblue;
     padding: 5px;
-    position: relative;
     background-color: darkturquoise;
 
 }
@@ -79,6 +80,10 @@ article p {
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     
+}
+
+#contBtns {
+    text-align: center;
 }
 
 .btn {
@@ -106,7 +111,6 @@ article p {
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    margin: 10px;
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
@@ -137,4 +141,29 @@ article p {
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
+}
+
+
+
+@media (max-width: 700px) {
+
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    #ContPrincipal {
+        margin: auto;
+    }
+
+    #contBtns {
+        text-align: center;
+    }
+    
+    #contadores {
+        margin: auto;
+    }
 }

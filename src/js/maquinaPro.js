@@ -25,6 +25,7 @@ let derrotas = JSON.parse(localStorage.getItem('derrotas')) || 0;
 let empates = JSON.parse(localStorage.getItem('empates')) || 0;
 
 let juego = true;
+let bloqueo = false
 
 // mensajeGane.textContent = "¡¿Puedes ganar?!";
 
@@ -36,16 +37,71 @@ contadorE.textContent = empates;
 // Lógica para que la máquina haga su movimiento
 function maquina() {
     setTimeout(() => {
-        let btnRandom = listaBotonesDisponibles[Math.floor(Math.random() * listaBotonesDisponibles.length)];
 
-        if (btnRandom == undefined) {
-            QuienGana();
-        } else {
-            btnRandom.textContent = "O";
-            listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== btnRandom);
-            QuienGana();
+        const combinaciones = [
+            [0, 1, 2], 
+            [3, 4, 5], 
+            [6, 7, 8], // filas
+            [0, 3, 6], 
+            [1, 4, 7], 
+            [2, 5, 8], // columnas
+            [0, 4, 8], 
+            [2, 4, 6] // diagonales
+        ];
+
+
+        for (let comb of combinaciones) {
+            
+            
+            if(bloqueo == false) {
+                if (BtnTotales[comb[1]].textContent === "X" && BtnTotales[comb[2]].textContent === "X") {
+                    BtnTotales[comb[0]].textContent = "O";
+                    console.log("Entra1");
+                    
+                    bloqueo = true
+
+                    break;
+                }
+    
+                else if (BtnTotales[comb[0]].textContent === "X" && BtnTotales[comb[2]].textContent === "X") {
+                    BtnTotales[comb[1]].textContent = "O";
+                    bloqueo = true
+
+                    console.log("Entra2");
+                    break;
+                }
+    
+                else if (BtnTotales[comb[0]].textContent === "X" && BtnTotales[comb[1]].textContent === "X") {
+                    BtnTotales[comb[2]].textContent = "O";
+                    bloqueo = true
+
+                    console.log("Entra3");
+
+                    break;
+                }
+
+            }
         }
 
+        if (listaBotonesDisponibles.length > 0 && bloqueo == false) {
+            console.log("holaa");
+            
+            let btnRandom = listaBotonesDisponibles[Math.floor(Math.random() * listaBotonesDisponibles.length)];
+            console.log(btnRandom);
+            
+
+            if (btnRandom !== undefined) {
+                btnRandom.textContent = "O";
+                listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== btnRandom); // Remover el botón de la lista de botones disponibles
+            }
+
+        }
+        bloqueo = false
+
+        QuienGana();
+
+            
+        
     }, 400);
 }
 
@@ -60,7 +116,7 @@ function QuienGana() {
         if (BtnTotales[comb[0]].textContent === "X" && BtnTotales[comb[1]].textContent === "X" && BtnTotales[comb[2]].textContent === "X") {
             victorias++;
             localStorage.setItem("victorias", JSON.stringify(victorias)); // Actualizar en localStorage
-            contadorV.textContent = victorias;
+
             mensajeGane.textContent = "¡Felicidades has ganado!";
 
             juego = false;
@@ -70,7 +126,7 @@ function QuienGana() {
             derrotas++;
             localStorage.setItem("derrotas", JSON.stringify(derrotas)); // Actualizar en localStorage
             contadorD.textContent = derrotas;
-            mensajeGane.textContent = "¡Has perdido, intentalo nuevamente!";
+            mensajeGane.textContent = "¡Has perdido!";
 
             juego = false;
         }
@@ -82,6 +138,7 @@ function QuienGana() {
         localStorage.setItem("empates", JSON.stringify(empates)); // Actualizar en localStorage
         contadorE.textContent = empates;
         mensajeGane.textContent = "¡Has empatado!";
+        
     }
 }
 
@@ -109,7 +166,6 @@ btnReset.addEventListener("click", function () {
     listaBotonesDisponibles = [btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8];
     
     mensajeGane.textContent = "¡¿Puedes ganar?!";
-    juego = true;
 });
 
 ResetearTodo.addEventListener("click", function (){
@@ -118,5 +174,6 @@ ResetearTodo.addEventListener("click", function (){
     if(Remove == true) {
         localStorage.clear()
         location.reload()
+        bloqueo = false
     }
 })

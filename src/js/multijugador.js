@@ -51,7 +51,7 @@ for (let index = 0; index < BtnTotales.length; index++) {
             if (element.textContent.trim() === "") {
                 element.textContent = "X";
     
-                // listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== element);
+                listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== element);
                 turno = "jugador 2"
             }
         }
@@ -61,7 +61,7 @@ for (let index = 0; index < BtnTotales.length; index++) {
             if (element.textContent.trim() === "") {
                 element.textContent = "O";
     
-                // listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== element);
+                listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== element);
                 turno = "jugador 1";
             }
         }

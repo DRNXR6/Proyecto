@@ -26,7 +26,7 @@ let empates = JSON.parse(localStorage.getItem('empates')) || 0;
 
 let juego = true;
 
-// mensajeGane.textContent = "¡¿Puedes ganar?!";
+mensajeGane.textContent = "¡¿Puedes ganar?!";
 
 // Mostrar los contadores recuperados del localStorage
 contadorV.textContent = victorias;
