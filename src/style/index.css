@@ -2,15 +2,15 @@ body {
     font-family: Arial, sans-serif;
 
     background-color: gray;
-
+    text-align: center;
 }
 
 
 #contPrincipal {
     text-align: center;
     border: solid;
-    padding: 50px;
-    width: 70%;
+    padding: 30px;
+    width: 60%;
     margin: auto;
     margin-top: 50px;
     background-color: darkcyan;
@@ -27,7 +27,7 @@ a {
 }
 
 button {
-    padding: 15px;
+    padding: 15px 20px;
     border-radius: 10px;
     background-color: lightskyblue;
 }
@@ -35,4 +35,16 @@ button {
 button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px 20px rgba(32, 178, 171, 0.536);
+}
+
+#volver {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    background-color: whitesmoke;
 }

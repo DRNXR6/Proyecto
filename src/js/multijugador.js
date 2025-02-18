@@ -107,13 +107,16 @@ function QuienGana() {
     }
 
     // Comprobar si hay empate (todas las casillas están llenas)
+    
     if (listaBotonesDisponibles.length === 0 && juego == true) {
         empates++;
         localStorage.setItem("empates", JSON.stringify(empates)); // Actualizar en localStorage
         contadorE.textContent = empates;
-        mensajeTurno.textContent = ""
 
+        mensajeTurno.textContent = ""
         mensajeGane.textContent = "¡Empate!";
+
+        
     }
 }
 

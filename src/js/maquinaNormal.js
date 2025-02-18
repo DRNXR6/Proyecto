@@ -51,22 +51,6 @@ function maquina() {
         
         for (let comb of combinaciones) {
 
-            //Condiciones para que la maquina gane
-            if (bloqueo === false && BtnTotales[comb[0]].textContent === "O" && BtnTotales[comb[1]].textContent === "O" && BtnTotales[comb[2]].textContent === "") {
-                BtnTotales[comb[2]].textContent = "O";
-                listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== BtnTotales[comb[2]]);
-                
-                bloqueo = true;
-
-                break;
-            }
-            if (bloqueo === false && BtnTotales[comb[0]].textContent === "O" && BtnTotales[comb[1]].textContent === "" && BtnTotales[comb[2]].textContent === "O") {
-                BtnTotales[comb[1]].textContent = "O";
-                listaBotonesDisponibles = listaBotonesDisponibles.filter(btn => btn !== BtnTotales[comb[1]]);
-                
-            }
-
-
             // Bloquear si el jugador va a ganar
             if (bloqueo === false && BtnTotales[comb[0]].textContent === "X" && BtnTotales[comb[1]].textContent === "X" && BtnTotales[comb[2]].textContent === "") {
                 BtnTotales[comb[2]].textContent = "O";

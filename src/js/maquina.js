@@ -120,3 +120,7 @@ ResetearTodo.addEventListener("click", function (){
         location.reload()
     }
 })
+
+function volver () {
+    localStorage.clear()
+}
